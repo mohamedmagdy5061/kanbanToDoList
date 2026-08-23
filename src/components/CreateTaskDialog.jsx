@@ -8,7 +8,9 @@ import {
   TextField,
   MenuItem,
   Alert,
+  Typography,
 } from '@mui/material';
+import { colors, stationLabels } from '../theme';
 
 const priorities = ['LOW', 'MEDIUM', 'HIGH'];
 
@@ -51,7 +53,19 @@ export default function CreateTaskDialog({
 
   return (
     <Dialog open={open} onClose={onClose} fullWidth maxWidth="sm">
-      <DialogTitle>Add Task</DialogTitle>
+      <DialogTitle sx={{ pb: 0.5 }}>
+        <Typography
+          sx={{
+            fontFamily: '"IBM Plex Mono", monospace',
+            fontSize: '0.7rem',
+            letterSpacing: '0.14em',
+            color: colors.textMuted,
+          }}
+        >
+          NEW STRIP · {stationLabels[column]?.toUpperCase()}
+        </Typography>
+        Add task
+      </DialogTitle>
 
       <DialogContent>
         {error && (
