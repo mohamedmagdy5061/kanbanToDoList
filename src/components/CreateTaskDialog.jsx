@@ -7,18 +7,24 @@ import {
   Button,
   TextField,
   MenuItem,
+  Alert,
 } from '@mui/material';
-import { useTasks } from '../hooks/useTasks';
 
 const priorities = ['LOW', 'MEDIUM', 'HIGH'];
 
-export default function CreateTaskDialog({ open, onClose, onCreate, column }) {
-  const { isCreating } = useTasks();
+export default function CreateTaskDialog({
+  open,
+  onClose,
+  onCreate,
+  isCreating,
+  column,
+}) {
   const [form, setForm] = useState({
     title: '',
     description: '',
     priority: 'LOW',
   });
+  const [error, setError] = useState(null);
 
   const handleChange = (field) => (e) => {
     setForm({ ...form, [field]: e.target.value });
@@ -27,18 +33,20 @@ export default function CreateTaskDialog({ open, onClose, onCreate, column }) {
   const handleSubmit = () => {
     if (!form.title.trim()) return;
 
-    onCreate({
-      ...form,
-      column,
-    });
+    setError(null);
 
-    setForm({
-      title: '',
-      description: '',
-      priority: 'LOW',
-    });
-
-    onClose();
+    onCreate(
+      { ...form, column },
+      {
+        onSuccess: () => {
+          setForm({ title: '', description: '', priority: 'LOW' });
+          onClose();
+        },
+        onError: () => {
+          setError('Failed to create task. Please try again.');
+        },
+      }
+    );
   };
 
   return (
@@ -46,6 +54,12 @@ export default function CreateTaskDialog({ open, onClose, onCreate, column }) {
       <DialogTitle>Add Task</DialogTitle>
 
       <DialogContent>
+        {error && (
+          <Alert severity="error" sx={{ mb: 2 }}>
+            {error}
+          </Alert>
+        )}
+
         <TextField
           label="Title"
           fullWidth

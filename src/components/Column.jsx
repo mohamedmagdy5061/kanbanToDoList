@@ -26,7 +26,13 @@ export default function Column({ column }) {
     id: column,
   });
 
-  const { data: tasks = [], isLoading, isError, createTask } = useTasks();
+  const {
+    data: tasks = [],
+    isLoading,
+    isError,
+    createTask,
+    isCreating,
+  } = useTasks();
 
   const { search, page, setPage } = useTaskStore();
 
@@ -133,6 +139,7 @@ export default function Column({ column }) {
           open={open}
           onClose={() => setOpen(false)}
           onCreate={createTask}
+          isCreating={isCreating}
           column={column}
         />
       )}
