@@ -26,7 +26,7 @@ export default function Column({ column }) {
     id: column,
   });
 
-  const { data: tasks = [], isLoading, createTask } = useTasks();
+  const { data: tasks = [], isLoading, isError, createTask } = useTasks();
 
   const { search, page, setPage } = useTaskStore();
 
@@ -52,10 +52,6 @@ export default function Column({ column }) {
   }, [tasks, column, search]);
 
   const paginatedTasks = filteredTasks.slice(0, page[column] * pageSize);
-
-  const handleCreateTask = (task) => {
-    createTask(task);
-  };
 
   return (
     <Paper
@@ -86,12 +82,19 @@ export default function Column({ column }) {
 
       {isLoading && <Typography>Loading...</Typography>}
 
-      {!isLoading &&
-        paginatedTasks.map((task) => 
-        <TaskCard key={task.id} task={task} />
-        )}
+      {isError && (
+        <Typography color="error" variant="body2" mt={2}>
+          Failed to load tasks. Please try again.
+        </Typography>
+      )}
 
-      {!isLoading && filteredTasks.length === 0 && (
+      {!isLoading &&
+        !isError &&
+        paginatedTasks.map((task) => (
+          <TaskCard key={task.id} task={task} />
+        ))}
+
+      {!isLoading && !isError && filteredTasks.length === 0 && (
         <Typography
           variant="body2"
           color="text.secondary"
@@ -129,7 +132,7 @@ export default function Column({ column }) {
         <CreateTaskDialog
           open={open}
           onClose={() => setOpen(false)}
-          onCreate={handleCreateTask}
+          onCreate={createTask}
           column={column}
         />
       )}
