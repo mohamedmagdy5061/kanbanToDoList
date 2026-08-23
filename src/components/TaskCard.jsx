@@ -1,4 +1,5 @@
-import { Card, CardContent, Typography, IconButton, Box } from '@mui/material';
+import { Card, CardContent, Typography, Box } from '@mui/material';
+import { memo } from 'react';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
 import { useDraggable } from '@dnd-kit/core';
 
@@ -8,12 +9,13 @@ const priorityStyles = {
   LOW: { color: '#6b7280', bg: '#e5e7eb' },
 };
 
-export default function TaskCard({ task }) {
+const TaskCard = ({ task }) => {
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
     id: String(task.id),
   });
 
-  const priority = priorityStyles[task.priority] || priorityStyles.LOW;
+  const priorityKey = priorityStyles[task.priority] ? task.priority : 'LOW';
+  const priority = priorityStyles[priorityKey];
 
   return (
     <Card
@@ -35,11 +37,7 @@ export default function TaskCard({ task }) {
       <CardContent>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Box display="flex" alignItems="center" gap={1}>
-            <Box
-              {...listeners}
-              {...attributes}
-              sx={{ cursor: 'grab', display: 'flex' }}
-            >
+            <Box sx={{ display: 'flex' }}>
               <DragIndicatorIcon fontSize="small" />
             </Box>
             <Typography fontWeight={600}>{task.title}</Typography>
@@ -66,9 +64,11 @@ export default function TaskCard({ task }) {
             backgroundColor: priority.bg,
           }}
         >
-          {task.priority}
+          {priorityKey}
         </Box>
       </CardContent>
     </Card>
   );
-}
+};
+
+export default memo(TaskCard);
