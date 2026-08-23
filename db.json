@@ -4,15 +4,85 @@
       "id": "1",
       "title": "Design homepage",
       "description": "Include hero section",
-      "column": "backlog",
+      "column": "done",
       "priority": "HIGH"
     },
     {
       "id": "2",
       "title": "Design homepage",
       "description": "Include hero section",
-      "column": "in_progress",
+      "column": "done",
       "priority": "LOW"
+    },
+    {
+      "id": "3",
+      "title": "Design homepage",
+      "description": "Include hero section",
+      "column": "done",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "5",
+      "title": "homepage",
+      "description": "Include hero section",
+      "column": "review",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "6",
+      "title": "Design homepage",
+      "description": "Include hero section",
+      "column": "review",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "7",
+      "title": "Design homepage",
+      "description": "Include hero section",
+      "column": "in_progress",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": "4",
+      "title": "Build auth flow",
+      "description": "Login & register",
+      "column": "in_progress",
+      "priority": "MEDIUM"
+    },
+    {
+      "title": "New Task",
+      "description": "Task description",
+      "column": "review",
+      "priority": "LOW",
+      "id": "BCWJUjfrnlA"
+    },
+    {
+      "title": "sss",
+      "description": "sss",
+      "priority": "LOW",
+      "column": "backlog",
+      "id": "f1fgrUFu6cQ"
+    },
+    {
+      "title": "sss",
+      "description": "sss",
+      "priority": "LOW",
+      "column": "backlog",
+      "id": "TGT0bfEzlMs"
+    },
+    {
+      "title": "ddd",
+      "description": "ddd",
+      "priority": "LOW",
+      "column": "review",
+      "id": "s7pTGI9jbGQ"
+    },
+    {
+      "title": "fffff",
+      "description": "ffff",
+      "priority": "HIGH",
+      "column": "backlog",
+      "id": "88NIbSvHZlo"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
