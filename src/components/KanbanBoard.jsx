@@ -46,16 +46,6 @@ export default function KanbanBoard() {
                               mb={3}
                         >
                               <Box>
-                                    <Typography
-                                          variant="caption"
-                                          sx={{
-                                                fontFamily: '"IBM Plex Mono", monospace',
-                                                color: colors.textMuted,
-                                                letterSpacing: '0.18em',
-                                          }}
-                                    >
-                                          DISPATCH · LIVE STATUS
-                                    </Typography>
                                     <Typography variant="h4" component="h1" sx={{ fontFamily: '"Big Shoulders Display", sans-serif', fontWeight: 800, letterSpacing: '0.01em', color: colors.textPrimary, lineHeight: 1.1 }}>
                                           Task Board
                                     </Typography>
