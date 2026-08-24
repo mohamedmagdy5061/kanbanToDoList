@@ -3,6 +3,7 @@ import { useDroppable } from '@dnd-kit/core';
 import { Paper, Typography, Button, Box } from '@mui/material';
 import TaskCard from './TaskCard';
 import ColumnHeader from './ColumnHeader';
+import ColumnFooter from './ColumnFooter';
 import { useTasks } from '../hooks/useTasks';
 import { useTaskStore } from '../store/useTaskStore';
 import CreateTaskDialog from './CreateTaskDialog';
@@ -66,9 +67,19 @@ export default function Column({ column }) {
             >
                   <Box sx={{ height: 4, backgroundColor: signal, flexShrink: 0 }} />
 
-                  <Box sx={{ p: 2, flex: 1, overflowY: 'auto' }}>
+                  <Box
+                        sx={{
+                              flexShrink: 0,
+                              px: 2,
+                              pt: 2,
+                              pb: 1.5,
+                              borderBottom: `1px solid ${colors.bayBorder}`,
+                        }}
+                  >
                         <ColumnHeader column={column} count={filteredTasks.length} />
+                  </Box>
 
+                  <Box sx={{ p: 2, flex: 1, overflowY: 'auto' }}>
                         {isLoading && (
                               <Typography sx={{ color: colors.textMuted, fontFamily: '"IBM Plex Mono", monospace', fontSize: '0.85rem' }}>
                                     Loading…
@@ -98,24 +109,6 @@ export default function Column({ column }) {
                               </Typography>
                         )}
 
-                        <Box mt={2}>
-                              <Button
-                                    fullWidth
-                                    variant="outlined"
-                                    sx={{
-                                          borderStyle: 'dashed',
-                                          borderColor: colors.bayBorder,
-                                          color: colors.textMuted,
-                                          fontFamily: '"IBM Plex Mono", monospace',
-                                          fontSize: '0.8rem',
-                                          letterSpacing: '0.06em',
-                                          '&:hover': { borderColor: signal, color: colors.textPrimary },
-                                    }}
-                                    onClick={() => setOpen(true)}
-                              >
-                                    + ADD TASK
-                              </Button>
-                        </Box>
                         {paginatedTasks.length < filteredTasks.length && (
                               <Box mt={1.5}>
                                     <Button
@@ -129,6 +122,8 @@ export default function Column({ column }) {
                               </Box>
                         )}
                   </Box>
+
+                  <ColumnFooter signal={signal} onAddTask={() => setOpen(true)} />
                   {open && (
                         <CreateTaskDialog
                               open={open}

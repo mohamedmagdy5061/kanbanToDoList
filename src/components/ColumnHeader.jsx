@@ -3,7 +3,7 @@ import { colors, stationLabels, stationCodes } from '../theme';
 
 export default function ColumnHeader({ column, count }) {
       return (
-            <Box display="flex" alignItems="baseline" justifyContent="space-between" mb={2}>
+            <Box display="flex" alignItems="baseline" justifyContent="space-between">
                   <Box>
                         <Typography
                               sx={{
