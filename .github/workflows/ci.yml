@@ -41,6 +41,12 @@ jobs:
         run: | 
           npm install
 
+      - name: Start JSON Server
+        run: npm run server &
+
+      - name: Wait for JSON Server
+        run: npx wait-on http://localhost:4000
+
       - name: Build React App
         run: |
           npm run build
