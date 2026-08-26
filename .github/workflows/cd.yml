@@ -6,6 +6,9 @@ jobs:
   deploy:
     name: deploy on vercel
     runs-on: ubuntu-latest
+
+    if: ${{github.event.workflow_run.conclusion == 'success'}}
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
