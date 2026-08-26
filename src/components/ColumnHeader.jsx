@@ -10,7 +10,8 @@ export default function ColumnHeader({ column, count }) {
                                     fontFamily: '"IBM Plex Mono", monospace',
                                     fontSize: '0.7rem',
                                     letterSpacing: '0.1em',
-                                    color: colors.textMuted,
+                                    // color: colors.textMuted,
+                                    color: 'red'
                               }}
                         >
                               {stationCodes[column]}
