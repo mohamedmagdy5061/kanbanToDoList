@@ -25,7 +25,7 @@
       "id": "5",
       "title": "homepage",
       "description": "Include hero section",
-      "column": "review",
+      "column": "in_progress",
       "priority": "MEDIUM"
     },
     {
@@ -39,14 +39,14 @@
       "id": "7",
       "title": "Design homepage",
       "description": "Include hero section",
-      "column": "in_progress",
+      "column": "backlog",
       "priority": "MEDIUM"
     },
     {
       "id": "4",
       "title": "Build auth flow",
       "description": "Login & register",
-      "column": "in_progress",
+      "column": "review",
       "priority": "MEDIUM"
     },
     {
@@ -60,7 +60,7 @@
       "title": "sss",
       "description": "sss",
       "priority": "LOW",
-      "column": "backlog",
+      "column": "in_progress",
       "id": "f1fgrUFu6cQ"
     },
     {
@@ -81,8 +81,15 @@
       "title": "fffff",
       "description": "ffff",
       "priority": "HIGH",
-      "column": "backlog",
+      "column": "in_progress",
       "id": "88NIbSvHZlo"
+    },
+    {
+      "title": "test cd ",
+      "description": "dddd",
+      "priority": "MEDIUM",
+      "column": "in_progress",
+      "id": "7mEiEsMIDGQ"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
