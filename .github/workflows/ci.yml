@@ -27,6 +27,7 @@ jobs:
   build:
     name: build
     runs-on: ubunto-latest
+    needs: [lint]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
