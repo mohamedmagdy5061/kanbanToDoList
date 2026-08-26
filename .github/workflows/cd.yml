@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     if: ${{github.event.workflow_run.conclusion == 'success'}}
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,6 +20,13 @@ jobs:
           
       - name: insall dependenceis
         run: npm install
+
+      - name: Start JSON Server
+        run: npm run server &
+
+      - name: Wait for JSON Server
+        run: npx wait-on http://localhost:4000
+
         
        # Step 4: Install the Vercel CLI globally
       - name: Install Vercel CLI
